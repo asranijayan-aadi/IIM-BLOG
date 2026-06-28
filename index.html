@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>IIMBGUNTOLD — Every Student Has A Story</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0B1F3A;--navy2:#1E3358;--gold:#D4AF37;--gold2:#B8960F;--white:#fff;
+  --g50:#F7F8FA;--g100:#EEF0F4;--g200:#D5D9E2;--g400:#8892A4;--g600:#4A5568;--g800:#1A2332;
+  --red:#E53E3E;--green:#38A169;
+  --fd:'Playfair Display',serif;--fb:'Inter',sans-serif;--fh:'Poppins',sans-serif;
+}
+body{font-family:var(--fb);background:var(--g50);color:var(--g800);min-height:100vh}
+.hidden{display:none!important}
+.page{animation:fIn .3s ease}
+@keyframes fIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* NAV */
+nav{background:var(--navy);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:200;box-shadow:0 2px 16px rgba(0,0,0,.3)}
+.nav-brand{font-family:var(--fd);font-size:1.3rem;font-weight:900;color:var(--white);cursor:pointer;flex-shrink:0}
+.nav-brand span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:1.1rem}
+.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.8rem;font-weight:500;cursor:pointer;transition:.2s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.act{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:.6rem}
+.nsw{position:relative}
+.nsrch{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.33rem .7rem .33rem 1.8rem;color:var(--white);font-size:.78rem;font-family:var(--fb);width:155px;outline:none;transition:.2s}
+.nsrch::placeholder{color:rgba(255,255,255,.38)}
+.nsrch:focus{background:rgba(255,255,255,.14);width:195px;border-color:var(--gold)}
+.si{position:absolute;left:.5rem;top:50%;transform:translateY(-50%);font-size:.76rem;color:rgba(255,255,255,.38);pointer-events:none}
+.nav-cta{background:var(--gold);color:var(--navy);border:none;padding:.38rem .9rem;border-radius:6px;font-weight:700;font-size:.78rem;cursor:pointer;font-family:var(--fb);transition:.2s;white-space:nowrap}
+.nav-cta:hover{background:var(--gold2)}
+.nib{background:none;border:none;color:rgba(255,255,255,.7);cursor:pointer;font-size:.95rem;padding:.28rem;border-radius:5px;transition:.2s;position:relative}
+.nib:hover{color:var(--gold)}
+.ndot{position:absolute;top:1px;right:1px;width:6px;height:6px;border-radius:50%;background:var(--red);border:1.5px solid var(--navy);display:none}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#16305a 60%,#0f2545 100%);padding:4rem 2rem 3.2rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(212,175,55,.09) 0%,transparent 60%)}
+.ptcl{position:absolute;opacity:.12;animation:flt 6s ease-in-out infinite;pointer-events:none}
+@keyframes flt{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-13px) rotate(8deg)}}
+.hero-eye{font-family:var(--fh);font-size:.72rem;font-weight:600;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.7rem}
+.hero-title{font-family:var(--fd);font-size:clamp(1.9rem,5vw,3.4rem);font-weight:900;color:var(--white);line-height:1.15;margin-bottom:.85rem}
+.hero-title .ul{position:relative;display:inline-block}
+.hero-title .ul::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:3px;background:var(--gold);border-radius:2px;animation:dL 1.2s .4s ease forwards}
+@keyframes dL{to{width:100%}}
+.hero-sub{color:rgba(255,255,255,.67);font-size:.95rem;max-width:560px;margin:0 auto 1.6rem;line-height:1.75}
+.hero-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.btn-gold{background:var(--gold);color:var(--navy);border:none;padding:.65rem 1.5rem;border-radius:8px;font-weight:700;font-size:.88rem;cursor:pointer;font-family:var(--fb);transition:.2s}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-ol{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.3);padding:.65rem 1.5rem;border-radius:8px;font-weight:500;font-size:.88rem;cursor:pointer;font-family:var(--fb);transition:.2s}
+.btn-ol:hover{border-color:var(--gold);color:var(--gold)}
+
+/* STATS */
+.stats-bar{background:var(--navy);display:flex;justify-content:center;gap:3rem;padding:1.4rem;flex-wrap:wrap}
+.sn{font-family:var(--fd);font-size:1.75rem;font-weight:900;color:var(--gold)}
+.sl{font-size:.72rem;color:rgba(255,255,255,.5);margin-top:.1rem}
+
+/* SECTIONS */
+.sec{padding:2.2rem 1.5rem;max-width:1100px;margin:0 auto}
+.sec-title{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--navy);margin-bottom:.28rem}
+.sec-sub{color:var(--g400);font-size:.82rem;margin-bottom:1.3rem}
+
+/* CARDS */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:1.2rem}
+.card{background:var(--white);border-radius:14px;overflow:hidden;box-shadow:0 1px 8px rgba(0,0,0,.06);cursor:pointer;transition:.25s;border:1px solid var(--g100)}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 26px rgba(0,0,0,.12)}
+.card-img{width:100%;height:155px;object-fit:cover;background:linear-gradient(135deg,var(--navy),var(--navy2));display:flex;align-items:center;justify-content:center;font-size:2.2rem}
+.cbody{padding:.95rem}
+.crow{display:flex;align-items:center;justify-content:space-between;margin-bottom:.32rem}
+.ccat{font-size:.68rem;font-weight:700;color:var(--gold2);text-transform:uppercase;letter-spacing:.08em}
+.bkb{background:none;border:none;cursor:pointer;font-size:.9rem;color:var(--g400);padding:0;line-height:1;transition:.2s}
+.bkb:hover,.bkb.on{color:var(--gold)}
+.ctitle{font-family:var(--fd);font-size:1.02rem;font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:.45rem}
+.cexc{font-size:.76rem;color:var(--g400);line-height:1.5;margin-bottom:.55rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cmeta{display:flex;align-items:center;gap:.55rem;font-size:.71rem;color:var(--g400)}
+.cav{width:21px;height:21px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:.53rem;font-weight:700;color:var(--white);flex-shrink:0}
+.cstats{display:flex;gap:.65rem;margin-top:.55rem;padding-top:.55rem;border-top:1px solid var(--g100);font-size:.7rem;color:var(--g400)}
+
+/* SORT / FILTER */
+.sort-row{display:flex;gap:.45rem;margin-bottom:.9rem;flex-wrap:wrap}
+.sbtn{background:var(--white);border:1.5px solid var(--g200);padding:.28rem .75rem;border-radius:6px;font-size:.75rem;font-weight:500;color:var(--g600);cursor:pointer;font-family:var(--fb);transition:.2s}
+.sbtn:hover,.sbtn.on{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.cpills{display:flex;flex-wrap:wrap;gap:.45rem}
+.cpill{padding:.33rem .85rem;border-radius:100px;background:var(--white);border:1.5px solid var(--g200);font-size:.75rem;font-weight:500;color:var(--g600);cursor:pointer;transition:.2s;font-family:var(--fb)}
+.cpill:hover,.cpill.on{background:var(--navy);color:var(--white);border-color:var(--navy)}
+
+/* EMPTY STATE */
+.empty-s{text-align:center;padding:2.5rem 1.5rem;color:var(--g400)}
+.empty-s .ei{font-size:2.2rem;margin-bottom:.55rem}
+.empty-s h3{font-family:var(--fd);font-size:1.05rem;color:var(--navy);margin-bottom:.28rem}
+.empty-s p{font-size:.82rem;margin-bottom:1rem}
+
+/* TOP BLOGS */
+.top-pg{max-width:900px;margin:0 auto;padding:2rem 1.5rem 3rem}
+.top-hero{background:linear-gradient(135deg,var(--navy),#16305a);border-radius:16px;padding:2rem;margin-bottom:1.5rem;text-align:center;position:relative;overflow:hidden}
+.top-hero::before{content:'🏆';position:absolute;right:1.5rem;top:1rem;font-size:5rem;opacity:.08}
+.top-hero h1{font-family:var(--fd);font-size:1.8rem;font-weight:900;color:var(--white);margin-bottom:.4rem}
+.top-hero p{color:rgba(255,255,255,.65);font-size:.87rem}
+.tf-row{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.2rem}
+.tfbtn{padding:.4rem 1rem;border-radius:100px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:var(--fb);border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:rgba(255,255,255,.8);transition:.2s}
+.tfbtn:hover,.tfbtn.on{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.rank-card{background:var(--white);border-radius:14px;border:1px solid var(--g100);display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.1rem;cursor:pointer;transition:.2s;margin-bottom:.75rem}
+.rank-card:hover{transform:translateX(3px);box-shadow:0 4px 16px rgba(0,0,0,.09)}
+.rank-num{font-family:var(--fd);font-size:1.8rem;font-weight:900;color:var(--g200);min-width:36px;text-align:center;line-height:1}
+.rank-num.top1{color:var(--gold)}.rank-num.top2{color:#A8A9AD}.rank-num.top3{color:#CD7F32}
+.rank-img{width:72px;height:58px;border-radius:8px;object-fit:cover;background:linear-gradient(135deg,var(--navy),var(--navy2));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.rank-info{flex:1;min-width:0}
+.rank-cat{font-size:.68rem;font-weight:700;color:var(--gold2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.2rem}
+.rank-title{font-family:var(--fd);font-size:.98rem;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:.3rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rank-meta{font-size:.72rem;color:var(--g400);display:flex;gap:.6rem;flex-wrap:wrap}
+.rank-score{background:var(--navy);color:var(--gold);font-size:.7rem;font-weight:700;padding:.2rem .5rem;border-radius:6px;font-family:var(--fh);flex-shrink:0}
+
+/* CAMPUS MOMENTS */
+.moments-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.mitem{border-radius:10px;height:120px;display:flex;align-items:center;justify-content:center;font-size:1.9rem;cursor:pointer;transition:.22s;overflow:hidden;position:relative;background:linear-gradient(135deg,var(--navy),var(--navy2))}
+.mitem:hover{transform:scale(1.03)}
+.mitem img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.mitem-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.6));padding:.3rem .5rem;font-size:.65rem;color:#fff;font-weight:500}
+.m-g1{grid-column:span 2;height:145px}.m-g5{grid-column:span 2;height:145px}
+.m-emoji{position:relative;z-index:1}
+
+/* EDITOR */
+.editor-pg{max-width:790px;margin:1.5rem auto;padding:0 1.25rem 3rem}
+.ec{background:var(--white);border-radius:14px;padding:1.4rem;border:1px solid var(--g100);margin-bottom:.9rem}
+.ec h2{font-family:var(--fd);font-size:1.3rem;color:var(--navy);margin-bottom:.18rem}
+.ec p{font-size:.8rem;color:var(--g400)}
+.bk{background:none;border:none;color:var(--navy2);font-size:.8rem;cursor:pointer;font-family:var(--fb);font-weight:500;margin-bottom:.9rem;padding:0;display:flex;align-items:center;gap:.28rem}
+.bk:hover{color:var(--gold2)}
+.mr{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:.8rem}
+.mr input,.mr select{flex:1;min-width:125px;padding:.46rem .68rem;border:1.5px solid var(--g200);border-radius:8px;font-size:.8rem;font-family:var(--fb);color:var(--navy);background:var(--white);outline:none}
+.mr input:focus,.mr select:focus{border-color:var(--gold)}
+.ti{width:100%;padding:.68rem .88rem;border:1.5px solid var(--g200);border-radius:10px;font-size:1.25rem;font-family:var(--fd);font-weight:700;color:var(--navy);outline:none;margin-bottom:.68rem}
+.ti::placeholder{color:var(--g200)}.ti:focus{border-color:var(--gold)}
+.tb-bar{background:var(--white);border:1.5px solid var(--g200);border-radius:10px 10px 0 0;padding:.5rem .6rem;display:flex;flex-wrap:wrap;gap:.28rem;align-items:center}
+.tb{background:none;border:none;padding:.26rem .42rem;border-radius:5px;cursor:pointer;font-size:.78rem;color:var(--g600);font-family:var(--fb);transition:.15s;font-weight:500}
+.tb:hover{background:var(--g100);color:var(--navy)}
+.tsep{width:1px;height:17px;background:var(--g200);margin:0 .12rem}
+.ea{width:100%;min-height:320px;border:1.5px solid var(--g200);border-top:none;border-radius:0 0 10px 10px;padding:.85rem;font-size:.95rem;font-family:var(--fb);color:var(--navy);outline:none;resize:none;line-height:1.8}
+.ea:focus{border-color:var(--gold);border-top-color:var(--gold)}
+.wc{font-size:.72rem;color:var(--g400);text-align:right;margin-top:.32rem}
+.uz{border:2px dashed var(--g200);border-radius:10px;padding:1.3rem;text-align:center;cursor:pointer;transition:.2s;background:var(--g50)}
+.uz:hover,.uz.dov{border-color:var(--gold);background:rgba(212,175,55,.04)}
+.uz .uico{font-size:1.6rem;margin-bottom:.35rem}
+.uz .ulab{font-weight:600;color:var(--navy);font-size:.82rem;display:block;margin-bottom:.12rem}
+.uz .uhint{font-size:.71rem;color:var(--g400)}
+.finp{display:none}
+.cpv{width:100%;height:170px;border-radius:10px;object-fit:cover;display:none;margin-top:.45rem;border:1.5px solid var(--g200)}
+.cpv.show{display:block}
+.ithumb{position:relative;width:85px;height:68px;border-radius:7px;overflow:hidden;border:1.5px solid var(--g200);cursor:pointer;flex-shrink:0}
+.ithumb img{width:100%;height:100%;object-fit:cover}
+.rmi{position:absolute;top:2px;right:2px;background:rgba(0,0,0,.6);color:#fff;border:none;border-radius:50%;width:16px;height:16px;font-size:.58rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.ea-actions{display:flex;gap:.6rem;margin-top:.85rem;justify-content:flex-end;flex-wrap:wrap}
+.bghost{background:none;border:1.5px solid var(--g200);color:var(--g600);padding:.48rem 1rem;border-radius:8px;font-size:.8rem;cursor:pointer;font-family:var(--fb);font-weight:500;transition:.2s}
+.bghost:hover{border-color:var(--navy);color:var(--navy)}
+.bpub{background:var(--navy);color:var(--white);border:none;padding:.48rem 1.2rem;border-radius:8px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:var(--fb);transition:.2s}
+.bpub:hover{background:var(--gold);color:var(--navy)}
+
+/* BLOG DETAIL */
+.bd-pg{max-width:700px;margin:1.5rem auto;padding:0 1.25rem 3rem}
+.bd-cov{width:100%;height:290px;border-radius:14px;object-fit:cover;background:linear-gradient(135deg,var(--navy),var(--navy2));display:flex;align-items:center;justify-content:center;font-size:3rem;margin-bottom:1.25rem}
+.bd-cat{font-size:.7rem;font-weight:700;color:var(--gold2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.38rem}
+.bd-title{font-family:var(--fd);font-size:1.85rem;font-weight:900;color:var(--navy);line-height:1.2;margin-bottom:.85rem}
+.bd-ar{display:flex;align-items:center;gap:.65rem;margin-bottom:1.2rem;padding-bottom:.85rem;border-bottom:1px solid var(--g100)}
+.bav{width:36px;height:36px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--white);font-size:.82rem;flex-shrink:0}
+.bai small{display:block;font-size:.7rem;color:var(--g400);margin-top:.08rem}
+.bbody{font-size:.98rem;line-height:1.9;color:var(--g600)}
+.bbody p{margin-bottom:.85rem}
+.bbody img{max-width:100%;border-radius:8px;margin:.75rem 0}
+.bbody h2{font-family:var(--fd);font-size:1.35rem;color:var(--navy);margin:1.1rem 0 .45rem}
+.bbody h3{font-family:var(--fd);font-size:1.1rem;color:var(--navy);margin:.9rem 0 .38rem}
+.bbody blockquote{border-left:3px solid var(--gold);padding:.45rem .95rem;color:var(--g600);font-style:italic;margin:.75rem 0;background:rgba(212,175,55,.06);border-radius:0 6px 6px 0}
+.bbody pre{background:var(--g50);border-radius:7px;padding:.65rem;font-family:monospace;font-size:.83rem;overflow-x:auto;margin:.65rem 0}
+.bbody ul,.bbody ol{padding-left:1.35rem;margin:.45rem 0}
+.ab{display:flex;gap:.7rem;padding:.85rem 0;border-top:1px solid var(--g100);border-bottom:1px solid var(--g100);margin:1.2rem 0;flex-wrap:wrap}
+.actb{background:none;border:1.5px solid var(--g200);padding:.36rem .8rem;border-radius:8px;font-size:.76rem;color:var(--g600);cursor:pointer;display:flex;align-items:center;gap:.32rem;font-family:var(--fb);transition:.2s}
+.actb:hover{border-color:var(--gold);color:var(--gold2)}
+.actb.liked{border-color:var(--red);color:var(--red)}
+.prb-wrap{position:sticky;top:60px;z-index:100;height:3px;background:var(--g100)}
+.prb{height:3px;background:var(--gold);width:0%;transition:width .1s}
+.ci{padding:.75rem .9rem;background:var(--g50);border-radius:10px;margin-bottom:.5rem;border:1px solid var(--g100)}
+.ci-nm{font-weight:600;font-size:.76rem;color:var(--navy);margin-bottom:.2rem}
+.ci-tx{font-size:.81rem;color:var(--g600);line-height:1.5}
+.ci-tm{font-size:.68rem;color:var(--g400);margin-top:.18rem}
+
+/* SEARCH / NOTIFS */
+.srch-pg{max-width:800px;margin:2rem auto;padding:0 1.5rem}
+.notif-pg{max-width:680px;margin:2rem auto;padding:0 1.5rem}
+.ni{background:var(--white);border:1px solid var(--g100);border-radius:10px;padding:.8rem .95rem;margin-bottom:.5rem;display:flex;align-items:flex-start;gap:.7rem;transition:.2s}
+.ni:hover{border-color:var(--g200)}
+.ni.unr{border-left:3px solid var(--gold)}
+.ni-tx{font-size:.82rem;color:var(--g600);line-height:1.5}
+.ni-tm{font-size:.68rem;color:var(--g400);margin-top:.18rem}
+
+/* TOAST */
+.toast{position:fixed;bottom:1.4rem;right:1.4rem;background:var(--navy);color:var(--white);padding:.6rem 1rem;border-radius:10px;font-size:.8rem;font-weight:500;transform:translateY(70px);opacity:0;transition:.3s;z-index:9999;border-left:4px solid var(--gold);max-width:270px}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* LOADING SPINNER */
+.spinner{display:inline-block;width:20px;height:20px;border:2px solid var(--g200);border-top-color:var(--gold);border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-overlay{text-align:center;padding:3rem;color:var(--g400)}
+
+/* ADMIN */
+.adm-pg{max-width:980px;margin:1.5rem auto;padding:0 1.25rem 3rem}
+.adm-hdr{background:linear-gradient(135deg,var(--navy),#16305a);border-radius:14px;padding:1.4rem;margin-bottom:1.1rem}
+.adm-hdr h1{font-family:var(--fd);font-size:1.5rem;font-weight:900;color:var(--white)}
+.adm-hdr p{font-size:.79rem;color:rgba(255,255,255,.55);margin-top:.25rem}
+.abadge{display:inline-block;background:var(--red);color:var(--white);font-size:.62rem;font-weight:700;padding:.18rem .45rem;border-radius:4px;margin-left:.45rem}
+.adm-tabs{display:flex;gap:.45rem;margin-bottom:1.1rem;flex-wrap:wrap}
+.atab{background:var(--white);border:1.5px solid var(--g200);padding:.36rem .85rem;border-radius:8px;font-size:.78rem;font-weight:500;color:var(--g600);cursor:pointer;font-family:var(--fb);transition:.2s}
+.atab:hover,.atab.on{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.adm-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.7rem;margin-bottom:1.1rem}
+.astat{background:var(--white);border:1px solid var(--g100);border-radius:12px;padding:.9rem;text-align:center}
+.asn{font-family:var(--fd);font-size:1.55rem;font-weight:900;color:var(--navy)}
+.asl{font-size:.7rem;color:var(--g400);margin-top:.15rem}
+.adm-list{display:flex;flex-direction:column;gap:.6rem}
+.ai{background:var(--white);border:1px solid var(--g100);border-radius:12px;padding:.95rem 1rem;display:flex;align-items:flex-start;justify-content:space-between;gap:.9rem;transition:.2s}
+.ai:hover{border-color:var(--g200);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.ai-inf{flex:1;min-width:0}
+.ai-ttl{font-family:var(--fd);font-size:.94rem;font-weight:700;color:var(--navy);margin-bottom:.18rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ai-mt{font-size:.71rem;color:var(--g400);margin-bottom:.3rem}
+.ai-ex{font-size:.76rem;color:var(--g600);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ai-act{display:flex;gap:.35rem;flex-shrink:0;flex-direction:column;align-items:flex-end}
+.bdg{font-size:.62rem;font-weight:600;padding:.18rem .45rem;border-radius:4px;display:inline-block}
+.bdg-pub{background:#EBF8F0;color:#22543D}.bdg-feat{background:#EBF4FF;color:#1A365D}.bdg-del{background:#FFF5F5;color:var(--red)}
+.abtn{padding:.28rem .65rem;border-radius:6px;font-size:.71rem;font-weight:500;cursor:pointer;font-family:var(--fb);border:none;transition:.2s;white-space:nowrap}
+.ab-view{background:var(--g100);color:var(--g600)}.ab-view:hover{background:var(--g200)}
+.ab-feat{background:#EBF4FF;color:#1A365D}.ab-feat:hover{background:#BEE3F8}
+.ab-del{background:#FFF5F5;color:var(--red)}.ab-del:hover{background:#FED7D7}
+.ab-rst{background:#EBF8F0;color:#22543D}.ab-rst:hover{background:#C6F6D5}
+.cmi-bl{font-size:.68rem;color:var(--gold2);font-weight:600;margin-bottom:.18rem}
+
+/* CAMPUS MOMENTS ADMIN */
+.cm-admin-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.65rem;margin-bottom:1rem}
+.cm-thumb{border-radius:10px;overflow:hidden;height:100px;position:relative;background:linear-gradient(135deg,var(--navy),var(--navy2));display:flex;align-items:center;justify-content:center;font-size:1.5rem;cursor:pointer}
+.cm-thumb img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.cm-thumb-label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.5);font-size:.65rem;color:#fff;padding:.2rem .4rem}
+.cm-rm{position:absolute;top:4px;right:4px;background:rgba(0,0,0,.65);color:#fff;border:none;border-radius:50%;width:20px;height:20px;font-size:.65rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2}
+.cm-add-zone{border:2px dashed var(--g200);border-radius:10px;height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:.2s;font-size:1.4rem}
+.cm-add-zone:hover{border-color:var(--gold);background:rgba(212,175,55,.04)}
+.cm-add-zone span{font-size:.75rem;color:var(--g400);margin-top:.2rem;font-weight:500}
+.cm-label-inp{width:100%;margin-top:.4rem;padding:.35rem .6rem;border:1.5px solid var(--g200);border-radius:6px;font-size:.76rem;font-family:var(--fb);color:var(--navy);outline:none}
+.cm-label-inp:focus{border-color:var(--gold)}
+
+/* MODAL */
+.modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);align-items:center;justify-content:center;padding:2rem;z-index:999}
+.modal-ov.open{display:flex}
+.modal{background:var(--white);border-radius:16px;padding:1.8rem;max-width:380px;width:100%}
+.modal h3{font-family:var(--fd);font-size:1.25rem;color:var(--navy);margin-bottom:.4rem}
+.modal p{font-size:.82rem;color:var(--g400);margin-bottom:1.1rem;line-height:1.55}
+.mi{width:100%;padding:.5rem .75rem;border:1.5px solid var(--g200);border-radius:8px;font-size:.88rem;font-family:var(--fb);color:var(--navy);outline:none;margin-bottom:.65rem}
+.mi:focus{border-color:var(--gold)}
+.merr{font-size:.76rem;color:var(--red);margin-bottom:.55rem;display:none}
+.mbtns{display:flex;gap:.55rem;justify-content:flex-end}
+
+/* FOOTER */
+footer{background:var(--g800);color:rgba(255,255,255,.6);padding:1.8rem;text-align:center}
+.ftb{font-family:var(--fd);font-size:1.05rem;font-weight:900;color:var(--white);margin-bottom:.25rem}
+.ftb span{color:var(--gold)}
+.ftl{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin:.5rem 0;font-size:.75rem}
+.ftl a{color:rgba(255,255,255,.45);text-decoration:none;cursor:pointer;transition:.2s}
+.ftl a:hover{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<div id="toast" class="toast"></div>
+<div class="prb-wrap" id="prb-wrap" style="display:none"><div class="prb" id="prb"></div></div>
+
+<nav>
+  <div class="nav-brand" onclick="go('home')">IIMBG<span>UNTOLD</span></div>
+  <div class="nav-links">
+    <a onclick="go('home')" id="nl-home" class="act">Home</a>
+    <a onclick="go('explore')">Explore</a>
+    <a onclick="go('topblogs')">Top Blogs</a>
+    <a onclick="go('notifs')" style="position:relative">Notifications<span class="ndot" id="ndot"></span></a>
+  </div>
+  <div class="nav-right">
+    <div class="nsw">
+      <span class="si">🔍</span>
+      <input class="nsrch" id="nsrch" type="text" placeholder="Search stories..." onkeydown="if(event.key==='Enter')doSearch()"/>
+    </div>
+    <button class="nib" onclick="go('notifs')">🔔<span class="ndot" id="ndot2"></span></button>
+    <button class="nav-cta" onclick="go('editor')">✍️ Write</button>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div id="pg-home" class="page">
+  <div class="hero">
+    <div id="ptcls"></div>
+    <div style="position:relative;z-index:1">
+      <div class="hero-eye">IIM Bodh Gaya — Official Student Blog</div>
+      <h1 class="hero-title">Stories Beyond <span class="ul">Classrooms.</span></h1>
+      <p class="hero-sub">Read inspiring journeys, placement stories, internship diaries, campus life and much more from the IIM Bodh Gaya community.</p>
+      <div class="hero-btns">
+        <button class="btn-gold" onclick="go('explore')">Explore Blogs</button>
+        <button class="btn-ol" onclick="go('editor')">Write Your Story</button>
+      </div>
+    </div>
+  </div>
+  <div class="stats-bar">
+    <div><div class="sn" id="s-total">0</div><div class="sl">Stories Published</div></div>
+    <div><div class="sn" id="s-views">0</div><div class="sl">Total Views</div></div>
+    <div><div class="sn" id="s-likes">0</div><div class="sl">Total Likes</div></div>
+    <div><div class="sn">48+</div><div class="sl">Categories</div></div>
+  </div>
+  <div class="sec">
+    <div class="sec-title">Featured Stories</div>
+    <div class="sec-sub">Handpicked by our editorial team</div>
+    <div class="sort-row">
+      <button class="sbtn on" onclick="setSort(this,'newest')">Newest</button>
+      <button class="sbtn" onclick="setSort(this,'popular')">Most Liked</button>
+      <button class="sbtn" onclick="setSort(this,'discussed')">Most Discussed</button>
+      <button class="sbtn" onclick="setSort(this,'featured')">Editor's Picks ⭐</button>
+    </div>
+    <div id="home-cards" class="cards-grid"></div>
+    <div id="home-empty" class="empty-s hidden">
+      <div class="ei">📖</div><h3>No stories yet</h3>
+      <p>Be the first to share your journey with the IIMBG community.</p>
+      <button class="btn-gold" onclick="go('editor')">Write the first story</button>
+    </div>
+  </div>
+  <div style="background:var(--g50);padding:2rem 1.5rem">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="sec-title">Campus Moments</div>
+      <div class="sec-sub">Glimpses of life at IIM Bodh Gaya</div>
+      <div class="moments-grid" id="moments-grid">
+        <div class="loading-overlay" style="grid-column:span 3"><div class="spinner"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPLORE -->
+<div id="pg-explore" class="page hidden">
+  <div class="sec" style="padding-top:1.8rem">
+    <div class="sec-title">Explore All Stories</div>
+    <div class="sec-sub">Browse, filter and discover</div>
+    <div class="cpills">
+      <span class="cpill on" onclick="filterCat(this,'all')">All</span>
+      <span class="cpill" onclick="filterCat(this,'Campus Life')">Campus Life</span>
+      <span class="cpill" onclick="filterCat(this,'Placements')">Placements</span>
+      <span class="cpill" onclick="filterCat(this,'Internships')">Internships</span>
+      <span class="cpill" onclick="filterCat(this,'Academics')">Academics</span>
+      <span class="cpill" onclick="filterCat(this,'Case Competitions')">Case Competitions</span>
+      <span class="cpill" onclick="filterCat(this,'Exchange Programs')">Exchange Programs</span>
+      <span class="cpill" onclick="filterCat(this,'Student Clubs')">Student Clubs</span>
+      <span class="cpill" onclick="filterCat(this,'Entrepreneurship')">Entrepreneurship</span>
+      <span class="cpill" onclick="filterCat(this,'Hostel Diaries')">Hostel Diaries</span>
+      <span class="cpill" onclick="filterCat(this,'Mental Health')">Mental Health</span>
+      <span class="cpill" onclick="filterCat(this,'Sports')">Sports</span>
+      <span class="cpill" onclick="filterCat(this,'Travel')">Travel</span>
+      <span class="cpill" onclick="filterCat(this,'Finance')">Finance</span>
+      <span class="cpill" onclick="filterCat(this,'Marketing')">Marketing</span>
+      <span class="cpill" onclick="filterCat(this,'Consulting')">Consulting</span>
+      <span class="cpill" onclick="filterCat(this,'Tech')">Tech</span>
+      <span class="cpill" onclick="filterCat(this,'Alumni Stories')">Alumni Stories</span>
+      <span class="cpill" onclick="filterCat(this,'Opinion')">Opinion</span>
+      <span class="cpill" onclick="filterCat(this,'Leadership')">Leadership</span>
+      <span class="cpill" onclick="filterCat(this,'Productivity')">Productivity</span>
+      <span class="cpill" onclick="filterCat(this,'Festivals')">Festivals</span>
+      <span class="cpill" onclick="filterCat(this,'Photography')">Photography</span>
+      <span class="cpill" onclick="filterCat(this,'Books')">Books</span>
+      <span class="cpill" onclick="filterCat(this,'CAT / IPM Journey')">CAT / IPM Journey</span>
+      <span class="cpill" onclick="filterCat(this,'Research')">Research</span>
+      <span class="cpill" onclick="filterCat(this,'Faculty Insights')">Faculty Insights</span>
+      <span class="cpill" onclick="filterCat(this,'Life Lessons')">Life Lessons</span>
+      <span class="cpill" onclick="filterCat(this,'Confessions')">Confessions</span>
+      <span class="cpill" onclick="filterCat(this,'Chai & Gossip')">Chai & Gossip</span>
+      <span class="cpill" onclick="filterCat(this,'Unpopular Opinions')">Unpopular Opinions</span>
+      <span class="cpill" onclick="filterCat(this,'Rant Zone')">Rant Zone</span>
+      <span class="cpill" onclick="filterCat(this,'Spicy Takes')">Spicy Takes</span>
+      <span class="cpill" onclick="filterCat(this,'Heartbreaks & Crushes')">Heartbreaks & Crushes</span>
+      <span class="cpill" onclick="filterCat(this,'3 AM Thoughts')">3 AM Thoughts</span>
+      <span class="cpill" onclick="filterCat(this,'Memes & Humor')">Memes & Humor</span>
+      <span class="cpill" onclick="filterCat(this,'Drama Diaries')">Drama Diaries</span>
+      <span class="cpill" onclick="filterCat(this,'Anonymous Stories')">Anonymous Stories</span>
+      <span class="cpill" onclick="filterCat(this,'Broke Student Life')">Broke Student Life</span>
+      <span class="cpill" onclick="filterCat(this,'Bunk Diaries')">Bunk Diaries</span>
+      <span class="cpill" onclick="filterCat(this,'Mess Food Reviews')">Mess Food Reviews</span>
+      <span class="cpill" onclick="filterCat(this,'Last Minute Submissions')">Last Minute Submissions</span>
+      <span class="cpill" onclick="filterCat(this,'Shower Thoughts')">Shower Thoughts</span>
+      <span class="cpill" onclick="filterCat(this,'Random Gyaan')">Random Gyaan</span>
+      <span class="cpill" onclick="filterCat(this,'Professor Rants')">Professor Rants</span>
+      <span class="cpill" onclick="filterCat(this,'Love Letters Unsent')">Love Letters Unsent</span>
+      <span class="cpill" onclick="filterCat(this,'Night Owl Chronicles')">Night Owl Chronicles</span>
+      <span class="cpill" onclick="filterCat(this,'We Do a Little Trolling')">We Do a Little Trolling</span>
+    </div>
+    <div style="margin-top:1.1rem"></div>
+    <div id="exp-cards" class="cards-grid"></div>
+    <div id="exp-empty" class="empty-s hidden">
+      <div class="ei">🔍</div><h3>No stories in this category</h3>
+      <p>Be the first to write about this topic.</p>
+      <button class="btn-gold" onclick="go('editor')">Write a story</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOP BLOGS -->
+<div id="pg-topblogs" class="page hidden">
+  <div class="top-pg">
+    <button class="bk" onclick="go('home')">← Back to home</button>
+    <div class="top-hero">
+      <h1>🏆 Top Blogs</h1>
+      <p>The most loved and discussed stories from the IIMBG community</p>
+      <div class="tf-row">
+        <button class="tfbtn on" onclick="setTopF(this,'today')">Today</button>
+        <button class="tfbtn" onclick="setTopF(this,'week')">Past Week</button>
+        <button class="tfbtn" onclick="setTopF(this,'month')">Past Month</button>
+        <button class="tfbtn" onclick="setTopF(this,'year')">Past Year</button>
+        <button class="tfbtn" onclick="setTopF(this,'all')">All Time</button>
+      </div>
+    </div>
+    <div id="top-period" style="font-size:.8rem;color:var(--g400);margin-bottom:.8rem;font-weight:500"></div>
+    <div id="top-list"></div>
+    <div id="top-empty" class="empty-s hidden">
+      <div class="ei">📊</div><h3>No stories in this period</h3>
+      <p>Check a wider time range or explore all stories.</p>
+      <button class="btn-gold" onclick="go('explore')">Explore stories</button>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG DETAIL -->
+<div id="pg-blog" class="page hidden">
+  <div class="bd-pg">
+    <button class="bk" id="blog-bk">← Back</button>
+    <div class="bd-cov" id="bd-cov">📖</div>
+    <div class="bd-cat" id="bd-cat"></div>
+    <h1 class="bd-title" id="bd-title"></h1>
+    <div class="bd-ar">
+      <div class="bav" id="bd-av"></div>
+      <div class="bai">
+        <span id="bd-auth" style="font-weight:600;font-size:.86rem;color:var(--navy)"></span>
+        <small id="bd-meta"></small>
+      </div>
+      <div style="margin-left:auto"><span class="bdg bdg-feat" id="bd-feat" style="display:none">⭐ Editor's Pick</span></div>
+    </div>
+    <div class="bbody" id="bd-body"></div>
+    <div style="margin-top:.85rem;font-size:.75rem;color:var(--g400)" id="bd-tags"></div>
+    <div class="ab">
+      <button class="actb" id="like-btn" onclick="likePost()">❤️ <span id="lc">0</span></button>
+      <button class="actb" id="bkm-btn" onclick="toggleBkm()">🔖 Save</button>
+      <button class="actb" onclick="sharePost()">📤 Share</button>
+    </div>
+    <div style="font-family:var(--fd);font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:.7rem">Discussion</div>
+    <div style="display:flex;gap:.55rem;margin-bottom:.7rem;flex-wrap:wrap">
+      <input type="text" id="ci-name" placeholder="Your name" style="padding:.46rem .65rem;border:1.5px solid var(--g200);border-radius:8px;font-size:.8rem;font-family:var(--fb);color:var(--navy);outline:none;width:140px"/>
+      <textarea id="ci-text" style="flex:1;min-width:180px;padding:.46rem .65rem;border:1.5px solid var(--g200);border-radius:8px;font-family:var(--fb);font-size:.82rem;color:var(--navy);outline:none;resize:none;height:44px;line-height:1.5" placeholder="Share your thoughts..."></textarea>
+      <button class="bpub" onclick="addCmt()">Post</button>
+    </div>
+    <div id="cmt-list"></div>
+  </div>
+</div>
+
+<!-- EDITOR -->
+<div id="pg-editor" class="page hidden">
+  <div class="editor-pg">
+    <button class="bk" onclick="go('home')">← Back to home</button>
+    <div class="ec"><h2>Write Your Story</h2><p>Share your experience with the IIM Bodh Gaya community</p></div>
+    <div class="ec">
+      <input class="ti" id="ed-title" type="text" placeholder="Give your story a compelling title..." maxlength="120"/>
+      <div class="mr">
+        <select id="ed-cat">
+          <option value="">Select category</option>
+          <optgroup label="Academic & Career">
+            <option>Campus Life</option><option>Placements</option><option>Internships</option>
+            <option>Academics</option><option>Case Competitions</option><option>Exchange Programs</option>
+            <option>Student Clubs</option><option>Entrepreneurship</option><option>CAT / IPM Journey</option>
+            <option>Research</option><option>Faculty Insights</option>
+          </optgroup>
+          <optgroup label="Campus Experience">
+            <option>Hostel Diaries</option><option>Sports</option><option>Festivals</option>
+            <option>Photography</option><option>Travel</option><option>Mess Food Reviews</option>
+            <option>Bunk Diaries</option><option>Night Owl Chronicles</option>
+          </optgroup>
+          <optgroup label="Professional">
+            <option>Finance</option><option>Marketing</option><option>Consulting</option>
+            <option>Tech</option><option>Alumni Stories</option><option>Leadership</option>
+          </optgroup>
+          <optgroup label="Thoughts & Feelings">
+            <option>Opinion</option><option>Mental Health</option><option>Productivity</option>
+            <option>Books</option><option>Life Lessons</option><option>Unpopular Opinions</option>
+            <option>Spicy Takes</option><option>3 AM Thoughts</option><option>Shower Thoughts</option>
+            <option>Random Gyaan</option>
+          </optgroup>
+          <optgroup label="Chatpati Corner">
+            <option>Confessions</option><option>Chai & Gossip</option><option>Rant Zone</option>
+            <option>Heartbreaks & Crushes</option><option>Memes & Humor</option>
+            <option>Drama Diaries</option><option>Anonymous Stories</option>
+            <option>Broke Student Life</option><option>Last Minute Submissions</option>
+            <option>Professor Rants</option><option>Love Letters Unsent</option>
+            <option>We Do a Little Trolling</option>
+          </optgroup>
+        </select>
+        <input type="text" id="ed-tags" placeholder="Tags: iimbg, mba, campus"/>
+        <input type="text" id="ed-author" placeholder="Your name"/>
+      </div>
+      <div style="margin-bottom:.7rem">
+        <div style="font-size:.76rem;font-weight:600;color:var(--g600);margin-bottom:.38rem">Cover image</div>
+        <div class="uz" id="cvr-zone" onclick="document.getElementById('cvr-inp').click()" ondragover="dov(event,'cvr-zone')" ondragleave="dlv('cvr-zone')" ondrop="ddrp(event,'cover')">
+          <div class="uico">🖼️</div><span class="ulab">Upload cover image</span><span class="uhint">Click or drag & drop · JPG, PNG, WEBP</span>
+        </div>
+        <input type="file" id="cvr-inp" class="finp" accept="image/*" onchange="hCover(event)"/>
+        <img id="cvr-prev" class="cpv" alt="cover"/>
+      </div>
+      <div class="tb-bar">
+        <button class="tb" onclick="fmt('bold')"><b>B</b></button>
+        <button class="tb" onclick="fmt('italic')"><i>I</i></button>
+        <button class="tb" onclick="fmt('underline')"><u>U</u></button>
+        <div class="tsep"></div>
+        <button class="tb" onclick="fmtB('h2')">H2</button>
+        <button class="tb" onclick="fmtB('h3')">H3</button>
+        <div class="tsep"></div>
+        <button class="tb" onclick="fmt('insertUnorderedList')">• List</button>
+        <button class="tb" onclick="fmt('insertOrderedList')">1. List</button>
+        <div class="tsep"></div>
+        <button class="tb" onclick="fmtB('blockquote')">" Quote</button>
+        <button class="tb" onclick="fmt('insertHorizontalRule')">— Line</button>
+        <div class="tsep"></div>
+        <button class="tb" onclick="document.getElementById('ii-inp').click()">📷 Image</button>
+        <input type="file" id="ii-inp" class="finp" accept="image/*" onchange="insImg(event)"/>
+        <div class="tsep"></div>
+        <button class="tb" onclick="insCode()">&lt;/&gt; Code</button>
+      </div>
+      <div class="ea" id="ed-area" contenteditable="true" oninput="onEd()" onpaste="cpaste(event)"></div>
+      <div class="wc" id="ed-wc">0 words · ~0 min read</div>
+      <div id="bulk-sec" style="margin-top:.7rem;display:none">
+        <div style="font-size:.73rem;font-weight:600;color:var(--g600);margin-bottom:.38rem">Uploaded images — click to insert</div>
+        <div style="display:flex;flex-wrap:wrap;gap:.45rem" id="bulk-thumbs"></div>
+      </div>
+      <div style="margin-top:.7rem">
+        <div class="uz" id="bulk-zone" onclick="document.getElementById('bulk-inp').click()" ondragover="dov(event,'bulk-zone')" ondragleave="dlv('bulk-zone')" ondrop="ddrp(event,'bulk')">
+          <div class="uico">📁</div><span class="ulab">Add more images</span><span class="uhint">Multiple files OK</span>
+        </div>
+        <input type="file" id="bulk-inp" class="finp" accept="image/*" multiple onchange="hBulk(event)"/>
+      </div>
+      <div class="ea-actions">
+        <button class="bghost" onclick="saveDraft()">Save draft</button>
+        <button class="bghost" onclick="previewBlog()">Preview</button>
+        <button class="bpub" id="pub-btn" onclick="publishBlog()">Publish story →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div id="pg-search" class="page hidden">
+  <div class="srch-pg">
+    <button class="bk" onclick="go('home')">← Back</button>
+    <div class="sec-title">Search Results</div>
+    <div class="sec-sub" id="srch-sub" style="margin-bottom:1.1rem"></div>
+    <div id="srch-cards" class="cards-grid"></div>
+    <div id="srch-empty" class="empty-s hidden">
+      <div class="ei">🔍</div><h3>No results found</h3><p>Try different keywords.</p>
+    </div>
+  </div>
+</div>
+
+<!-- NOTIFS -->
+<div id="pg-notifs" class="page hidden">
+  <div class="notif-pg">
+    <button class="bk" onclick="go('home')">← Back</button>
+    <div class="sec-title">Notifications</div>
+    <div class="sec-sub" style="margin-bottom:1.1rem">Activity from your stories and community</div>
+    <div id="notif-list"></div>
+  </div>
+</div>
+
+<!-- ADMIN MODAL -->
+<div class="modal-ov" id="adm-modal">
+  <div class="modal">
+    <div style="font-size:2rem;margin-bottom:.4rem">🔐</div>
+    <h3>Admin Access</h3>
+    <p>Restricted area. Enter your credentials to continue.</p>
+    <input class="mi" type="text" id="adm-u" placeholder="Username" autocomplete="off"/>
+    <input class="mi" type="password" id="adm-p" placeholder="Password" onkeydown="if(event.key==='Enter')tryLogin()"/>
+    <div class="merr" id="adm-err">Incorrect credentials. Access denied.</div>
+    <div class="mbtns">
+      <button class="bghost" onclick="closeAdm()">Cancel</button>
+      <button class="bpub" onclick="tryLogin()">Enter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="pg-admin" class="page hidden">
+  <div class="adm-pg">
+    <button class="bk" onclick="admLogout()">← Exit admin panel</button>
+    <div class="adm-hdr">
+      <h1>Admin Panel <span class="abadge">RESTRICTED</span></h1>
+      <p>Full control over IIMBGUNTOLD content, comments and campus moments. All changes save to Supabase instantly.</p>
+    </div>
+    <div class="adm-stats">
+      <div class="astat"><div class="asn" id="as-t">—</div><div class="asl">Total stories</div></div>
+      <div class="astat"><div class="asn" id="as-p">—</div><div class="asl">Published</div></div>
+      <div class="astat"><div class="asn" id="as-d">—</div><div class="asl">Removed</div></div>
+      <div class="astat"><div class="asn" id="as-c">—</div><div class="asl">Comments</div></div>
+      <div class="astat"><div class="asn" id="as-l">—</div><div class="asl">Total likes</div></div>
+      <div class="astat"><div class="asn" id="as-m">—</div><div class="asl">Campus photos</div></div>
+    </div>
+    <div class="adm-tabs">
+      <button class="atab on" onclick="admTab(this,'posts')">All Stories</button>
+      <button class="atab" onclick="admTab(this,'featured')">Editor's Picks</button>
+      <button class="atab" onclick="admTab(this,'removed')">Removed</button>
+      <button class="atab" onclick="admTab(this,'comments')">Comments</button>
+      <button class="atab" onclick="admTab(this,'moments')">📸 Campus Moments</button>
+    </div>
+    <div id="adm-content"></div>
+  </div>
+</div>
+
+<footer id="site-footer">
+  <div class="ftb">IIMBG<span>UNTOLD</span></div>
+  <div style="font-size:.72rem;color:rgba(255,255,255,.38);margin-bottom:.45rem">"Every Student Has A Story."</div>
+  <div class="ftl">
+    <a>About</a><a>Contact</a><a>Privacy Policy</a><a>Terms</a>
+    <a>Student Guidelines</a><a>Write for Us</a><a>FAQs</a>
+    <a onclick="openAdm()" style="color:rgba(255,255,255,.1);font-size:.6rem">Admin</a>
+  </div>
+  <div style="margin:.4rem 0;display:flex;gap:.55rem;justify-content:center;font-size:.95rem">
+    <span style="cursor:pointer">📸</span><span style="cursor:pointer">🔗</span>
+    <span style="cursor:pointer">🐦</span><span style="cursor:pointer">▶️</span>
+  </div>
+  <div style="font-size:.75rem;color:rgba(255,255,255,.5);margin-top:.5rem">Built with love for IIM Bodh Gaya by <strong style="color:var(--gold)">Jayan Asrani</strong></div>
+  <div style="font-size:.65rem;color:rgba(255,255,255,.22);margin-top:.25rem">© 2025 IIMBGUNTOLD</div>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════
+// SUPABASE CONFIG
+// ═══════════════════════════════════════════════
+var SB_URL = 'https://yvgxsdeszfeqelkgnujy.supabase.co';
+var SB_KEY = 'sb_publishable_CLXtd94eziQa8EEDJe8LzA_CNm-QwiR';
+
+function sbHeaders() {
+  return {
+    'Content-Type': 'application/json',
+    'apikey': SB_KEY,
+    'Authorization': 'Bearer ' + SB_KEY,
+    'Prefer': 'return=representation'
+  };
+}
+
+async function sbGet(table, query) {
+  query = query || '';
+  var res = await fetch(SB_URL + '/rest/v1/' + table + query, {
+    headers: Object.assign({}, sbHeaders(), {'Prefer': ''})
+  });
+  if (!res.ok) throw new Error('GET ' + table + ' failed: ' + res.status);
+  return res.json();
+}
+
+async function sbPost(table, data) {
+  var res = await fetch(SB_URL + '/rest/v1/' + table, {
+    method: 'POST', headers: sbHeaders(), body: JSON.stringify(data)
+  });
+  if (!res.ok) throw new Error('POST ' + table + ' failed: ' + res.status);
+  return res.json();
+}
+
+async function sbPatch(table, id, data) {
+  var res = await fetch(SB_URL + '/rest/v1/' + table + '?id=eq.' + id, {
+    method: 'PATCH', headers: sbHeaders(), body: JSON.stringify(data)
+  });
+  if (!res.ok) throw new Error('PATCH ' + table + ' failed: ' + res.status);
+  return res.json();
+}
+
+async function sbDelete(table, id) {
+  var res = await fetch(SB_URL + '/rest/v1/' + table + '?id=eq.' + id, {
+    method: 'DELETE', headers: Object.assign({}, sbHeaders(), {'Prefer': ''})
+  });
+  if (!res.ok) throw new Error('DELETE ' + table + ' failed: ' + res.status);
+}
+
+// ═══════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════
+var AU = 'iimbgadmin', AP = 'IIMBG@2025!', adminIn = false;
+var blogs = [], moments = [], savedBkms = [], notifs = [];
+var topFilter = 'today', sortMode = 'newest', catFilter = 'all';
+var curBlog = null, prevPage = 'home', coverData = null, autoST = null;
+
+// ═══════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════
+function go(pg) {
+  document.querySelectorAll('.page').forEach(function(e) { e.classList.add('hidden'); });
+  document.getElementById('site-footer').style.display = (pg === 'editor') ? 'none' : '';
+  document.getElementById('prb-wrap').style.display = (pg === 'blog') ? 'block' : 'none';
+  document.getElementById('pg-' + pg).classList.remove('hidden');
+  document.querySelectorAll('.nav-links a').forEach(function(a) { a.classList.remove('act'); });
+  var nl = document.getElementById('nl-' + pg); if (nl) nl.classList.add('act');
+  if (pg === 'home')     { loadAndRenderHome(); }
+  if (pg === 'explore')  { renderExplore(); }
+  if (pg === 'topblogs') { renderTopBlogs(); }
+  if (pg === 'notifs')   { renderNotifs(); }
+  if (pg === 'admin')    { renderAdmin('posts'); }
+  window.scrollTo(0, 0);
+  if (pg === 'blog') { window.addEventListener('scroll', updPrb); }
+  else { window.removeEventListener('scroll', updPrb); }
+}
+
+function updPrb() {
+  var b = document.getElementById('bd-body'); if (!b) return;
+  var r = b.getBoundingClientRect(), sc = Math.max(0, -r.top), tot = b.offsetHeight;
+  document.getElementById('prb').style.width = Math.min(100, Math.round((sc / Math.max(tot, 1)) * 100)) + '%';
+}
+
+// ═══════════════════════════════════════════════
+// HOME
+// ═══════════════════════════════════════════════
+async function loadAndRenderHome() {
+  try {
+    blogs = await sbGet('blogs', '?deleted=eq.false&order=id.desc');
+    updateStats();
+    renderCards(getSorted(blogs, sortMode), document.getElementById('home-cards'), document.getElementById('home-empty'));
+    loadMoments();
+  } catch(e) {
+    toast('⚠️ Could not load stories. Check your connection.');
+    console.error(e);
+  }
+}
+
+async function loadMoments() {
+  try {
+    moments = await sbGet('moments', '?order=sort_order.asc');
+    renderMomentsGrid();
+  } catch(e) { console.error('Moments load failed', e); }
+}
+
+function renderMomentsGrid() {
+  var g = document.getElementById('moments-grid'); if (!g) return;
+  g.innerHTML = '';
+  moments.forEach(function(m, i) {
+    var d = document.createElement('div');
+    var isFirst = i === 0, isLast = i === moments.length - 1;
+    d.className = 'mitem' + (m.span === 2 || isFirst ? ' m-g1' : isLast ? ' m-g5' : '');
+    if (m.img) {
+      var img = document.createElement('img'); img.src = m.img; img.alt = m.label;
+      img.style.cssText = 'width:100%;height:100%;object-fit:cover;position:absolute;inset:0';
+      d.appendChild(img);
+    } else {
+      var sp = document.createElement('span'); sp.className = 'm-emoji'; sp.textContent = m.emoji || '📷';
+      d.appendChild(sp);
+    }
+    var lbl = document.createElement('div'); lbl.className = 'mitem-label'; lbl.textContent = m.label;
+    d.appendChild(lbl); g.appendChild(d);
+  });
+  if (!moments.length) g.innerHTML = '<div style="grid-column:span 3;text-align:center;color:var(--g400);font-size:.85rem;padding:2rem">No campus moments yet. Add them from the admin panel.</div>';
+}
+
+function updateStats() {
+  document.getElementById('s-total').textContent = blogs.length;
+  document.getElementById('s-views').textContent = blogs.reduce(function(a, b) { return a + (b.views || 0); }, 0);
+  document.getElementById('s-likes').textContent = blogs.reduce(function(a, b) { return a + (b.likes || 0); }, 0);
+}
+
+// ═══════════════════════════════════════════════
+// CARDS
+// ═══════════════════════════════════════════════
+function renderCards(list, grid, empty) {
+  grid.innerHTML = '';
+  if (!list || !list.length) { grid.style.display = 'none'; empty.classList.remove('hidden'); return; }
+  grid.style.display = 'grid'; empty.classList.add('hidden');
+  list.forEach(function(b) {
+    var el = document.createElement('div'); el.className = 'card';
+    el.onclick = function() { prevPage = document.querySelector('.page:not(.hidden)').id.replace('pg-', ''); openBlog(b.id); };
+    var isBkm = savedBkms.indexOf(b.id) >= 0;
+    var wc = b.content ? b.content.replace(/<[^>]*>/g, '').trim().split(/\s+/).filter(Boolean).length : 0;
+    var mins = Math.max(1, Math.ceil(wc / 200));
+    var cov = b.cover ? '<img src="' + b.cover + '" class="card-img" alt="cover"/>' : '<div class="card-img">📖</div>';
+    el.innerHTML = cov + '<div class="cbody"><div class="crow"><span class="ccat">' + esc(b.category || 'General') + '</span>' + (b.featured ? '<span style="font-size:.68rem;color:var(--gold)">⭐</span>' : '') + '<button class="bkb' + (isBkm ? ' on' : '') + '" onclick="bkmClick(event,' + b.id + ')">🔖</button></div><div class="ctitle">' + esc(b.title || 'Untitled') + '</div><div class="cexc">' + esc(b.excerpt || '') + '</div><div class="cmeta"><div class="cav">' + esc((b.author || 'A').charAt(0).toUpperCase()) + '</div><span>' + esc(b.author || 'Anonymous') + '</span><span>·</span><span>' + mins + ' min</span></div><div class="cstats"><span>❤️ ' + (b.likes || 0) + '</span><span>👁 ' + (b.views || 0) + '</span><span>' + esc(b.date || '') + '</span></div></div>';
+    grid.appendChild(el);
+  });
+}
+
+function bkmClick(e, id) {
+  e.stopPropagation();
+  var i = savedBkms.indexOf(id);
+  if (i >= 0) { savedBkms.splice(i, 1); toast('Bookmark removed'); }
+  else { savedBkms.push(id); toast('🔖 Saved!'); }
+}
+
+function getSorted(list, s) {
+  var l = list.slice();
+  if (s === 'popular')   l.sort(function(a, b) { return (b.likes || 0) - (a.likes || 0); });
+  else if (s === 'discussed') l.sort(function(a, b) { return (b.comment_count || 0) - (a.comment_count || 0); });
+  else if (s === 'featured')  l = l.filter(function(b) { return b.featured; });
+  else l.sort(function(a, b) { return b.id - a.id; });
+  return l;
+}
+
+function setSort(el, s) { document.querySelectorAll('.sbtn').forEach(function(b) { b.classList.remove('on'); }); el.classList.add('on'); sortMode = s; renderCards(getSorted(blogs, s), document.getElementById('home-cards'), document.getElementById('home-empty')); }
+
+async function renderExplore() {
+  try {
+    if (!blogs.length) blogs = await sbGet('blogs', '?deleted=eq.false&order=id.desc');
+    var f = blogs.filter(function(b) { return catFilter === 'all' || b.category === catFilter; });
+    renderCards(f, document.getElementById('exp-cards'), document.getElementById('exp-empty'));
+  } catch(e) { toast('⚠️ Could not load stories.'); }
+}
+
+function filterCat(el, cat) { document.querySelectorAll('.cpill').forEach(function(p) { p.classList.remove('on'); }); el.classList.add('on'); catFilter = cat; renderExplore(); }
+
+// ═══════════════════════════════════════════════
+// TOP BLOGS
+// ═══════════════════════════════════════════════
+function renderTopBlogs() {
+  var now = new Date();
+  var filtered = blogs.filter(function(b) {
+    if (!b.published_at) return topFilter === 'all';
+    var diff = (now - new Date(b.published_at)) / (1000 * 60 * 60 * 24);
+    if (topFilter === 'today')  return diff < 1;
+    if (topFilter === 'week')   return diff < 7;
+    if (topFilter === 'month')  return diff < 30;
+    if (topFilter === 'year')   return diff < 365;
+    return true;
+  });
+  var scored = filtered.map(function(b) {
+    return Object.assign({}, b, { score: (b.likes || 0) * 3 + (b.comment_count || 0) * 2 + (b.views || 0) });
+  }).sort(function(a, b) { return b.score - a.score; });
+  var labels = { today: "Today's top picks", week: 'Top stories from the past week', month: 'Top stories from the past month', year: 'Top stories from the past year', all: 'All-time top stories' };
+  document.getElementById('top-period').textContent = labels[topFilter] || '';
+  var list = document.getElementById('top-list'), empty = document.getElementById('top-empty');
+  list.innerHTML = '';
+  if (!scored.length) { list.style.display = 'none'; empty.classList.remove('hidden'); return; }
+  list.style.display = 'block'; empty.classList.add('hidden');
+  scored.forEach(function(b, i) {
+    var wc = b.content ? b.content.replace(/<[^>]*>/g, '').trim().split(/\s+/).filter(Boolean).length : 0;
+    var mins = Math.max(1, Math.ceil(wc / 200));
+    var nc = 'rank-num' + (i === 0 ? ' top1' : i === 1 ? ' top2' : i === 2 ? ' top3' : '');
+    var cov = b.cover ? '<img src="' + b.cover + '" class="rank-img" alt="cover"/>' : '<div class="rank-img">📖</div>';
+    var d = document.createElement('div'); d.className = 'rank-card';
+    d.onclick = function() { prevPage = 'topblogs'; openBlog(b.id); };
+    d.innerHTML = '<div class="' + nc + '">' + (i + 1) + '</div>' + cov + '<div class="rank-info"><div class="rank-cat">' + esc(b.category || 'General') + '</div><div class="rank-title">' + esc(b.title || 'Untitled') + '</div><div class="rank-meta"><span>✍️ ' + esc(b.author || '?') + '</span><span>❤️ ' + (b.likes || 0) + '</span><span>👁 ' + (b.views || 0) + '</span><span>⏱ ' + mins + ' min</span></div></div><div class="rank-score">Score: ' + b.score + '</div>';
+    list.appendChild(d);
+  });
+}
+function setTopF(el, f) { document.querySelectorAll('.tfbtn').forEach(function(b) { b.classList.remove('on'); }); el.classList.add('on'); topFilter = f; renderTopBlogs(); }
+
+// ═══════════════════════════════════════════════
+// BLOG DETAIL
+// ═══════════════════════════════════════════════
+async function openBlog(id) {
+  var b = blogs.find(function(x) { return x.id === id; });
+  if (!b) return;
+  curBlog = id;
+  // increment views
+  try {
+    await sbPatch('blogs', id, { views: (b.views || 0) + 1 });
+    b.views = (b.views || 0) + 1;
+  } catch(e) { console.error(e); }
+
+  document.getElementById('bd-title').textContent = b.title || 'Untitled';
+  document.getElementById('bd-cat').textContent = b.category || 'General';
+  document.getElementById('bd-auth').textContent = b.author || 'Anonymous';
+  var wc = b.content ? b.content.replace(/<[^>]*>/g, '').trim().split(/\s+/).filter(Boolean).length : 0;
+  document.getElementById('bd-meta').textContent = (b.date || '') + ' · ' + Math.max(1, Math.ceil(wc / 200)) + ' min read';
+  document.getElementById('bd-av').textContent = (b.author || 'A').charAt(0).toUpperCase();
+  document.getElementById('bd-body').innerHTML = b.content || '';
+  document.getElementById('lc').textContent = b.likes || 0;
+  document.getElementById('bd-tags').textContent = b.tags ? '🏷 ' + b.tags : '';
+  document.getElementById('bd-feat').style.display = b.featured ? 'inline-block' : 'none';
+  document.getElementById('like-btn').classList.remove('liked');
+  document.getElementById('bkm-btn').textContent = savedBkms.indexOf(id) >= 0 ? '🔖 Saved' : '🔖 Save';
+  var cov = document.getElementById('bd-cov');
+  if (b.cover) { cov.innerHTML = '<img src="' + b.cover + '" style="width:100%;height:290px;object-fit:cover;border-radius:14px" alt="cover"/>'; }
+  else { cov.innerHTML = '📖'; cov.style.fontSize = '3rem'; }
+  document.getElementById('blog-bk').onclick = function() { go(prevPage || 'home'); };
+  await loadCmts(id);
+  go('blog');
+}
+
+async function loadCmts(blogId) {
+  var list = document.getElementById('cmt-list'); list.innerHTML = '<div class="loading-overlay"><div class="spinner"></div></div>';
+  try {
+    var cmts = await sbGet('comments', '?blog_id=eq.' + blogId + '&order=created_at.asc');
+    list.innerHTML = '';
+    cmts.forEach(function(c) {
+      var d = document.createElement('div'); d.className = 'ci';
+      d.innerHTML = '<div class="ci-nm">' + esc(c.name) + '</div><div class="ci-tx">' + esc(c.text) + '</div><div class="ci-tm">' + c.time + '</div>';
+      list.appendChild(d);
+    });
+    if (!cmts.length) list.innerHTML = '<div style="font-size:.8rem;color:var(--g400);text-align:center;padding:.7rem">No comments yet. Start the conversation!</div>';
+  } catch(e) { list.innerHTML = '<div style="font-size:.8rem;color:var(--red);padding:.7rem">Could not load comments.</div>'; }
+}
+
+async function addCmt() {
+  if (!curBlog) return;
+  var nm = document.getElementById('ci-name').value.trim(), tx = document.getElementById('ci-text').value.trim();
+  if (!nm || !tx) { toast('Enter your name and comment'); return; }
+  try {
+    var now = new Date();
+    await sbPost('comments', { blog_id: curBlog, name: nm, text: tx, time: now.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) });
+    document.getElementById('ci-text').value = '';
+    await loadCmts(curBlog);
+    addNotif('💬 ' + nm + ' commented on a story');
+    toast('💬 Comment posted!');
+  } catch(e) { toast('⚠️ Could not post comment. Try again.'); console.error(e); }
+}
+
+async function likePost() {
+  if (!curBlog) return;
+  var b = blogs.find(function(x) { return x.id === curBlog; });
+  if (!b) return;
+  try {
+    var newLikes = (b.likes || 0) + 1;
+    await sbPatch('blogs', curBlog, { likes: newLikes });
+    b.likes = newLikes;
+    document.getElementById('lc').textContent = newLikes;
+    document.getElementById('like-btn').classList.add('liked');
+    addNotif('❤️ Someone liked "' + b.title + '"');
+    toast('❤️ Appreciated!');
+  } catch(e) { toast('⚠️ Could not save like.'); }
+}
+
+function toggleBkm() {
+  if (!curBlog) return;
+  var i = savedBkms.indexOf(curBlog);
+  if (i >= 0) { savedBkms.splice(i, 1); document.getElementById('bkm-btn').textContent = '🔖 Save'; toast('Bookmark removed'); }
+  else { savedBkms.push(curBlog); document.getElementById('bkm-btn').textContent = '🔖 Saved'; toast('🔖 Saved!'); }
+}
+function sharePost() { toast('📤 Link copied to clipboard!'); }
+
+// ═══════════════════════════════════════════════
+// NOTIFICATIONS
+// ═══════════════════════════════════════════════
+var notifUnread = 0;
+function addNotif(msg) {
+  notifs.unshift({ msg: msg, time: new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }), unread: true });
+  if (notifs.length > 50) notifs = notifs.slice(0, 50);
+  notifUnread++;
+  document.getElementById('ndot').style.display = 'block';
+  document.getElementById('ndot2').style.display = 'block';
+}
+function renderNotifs() {
+  notifUnread = 0; notifs.forEach(function(n) { n.unread = false; });
+  document.getElementById('ndot').style.display = 'none';
+  document.getElementById('ndot2').style.display = 'none';
+  var list = document.getElementById('notif-list');
+  if (!notifs.length) { list.innerHTML = '<div class="empty-s"><div class="ei">🔔</div><h3>No notifications</h3><p>Activity will appear here.</p></div>'; return; }
+  list.innerHTML = '';
+  notifs.forEach(function(n) {
+    var d = document.createElement('div'); d.className = 'ni' + (n.unread ? ' unr' : '');
+    d.innerHTML = '<div class="ni-tx">' + esc(n.msg) + '</div><div class="ni-tm">' + n.time + '</div>';
+    list.appendChild(d);
+  });
+}
+
+// ═══════════════════════════════════════════════
+// SEARCH
+// ═══════════════════════════════════════════════
+function doSearch() {
+  var q = document.getElementById('nsrch').value.trim().toLowerCase(); if (!q) return;
+  var res = blogs.filter(function(b) {
+    return !b.deleted && ((b.title || '').toLowerCase().includes(q) || (b.content || '').replace(/<[^>]*>/g, '').toLowerCase().includes(q) || (b.author || '').toLowerCase().includes(q) || (b.category || '').toLowerCase().includes(q) || (b.tags || '').toLowerCase().includes(q));
+  });
+  document.getElementById('srch-sub').textContent = res.length + ' result' + (res.length !== 1 ? 's' : '') + ' for "' + q + '"';
+  renderCards(res, document.getElementById('srch-cards'), document.getElementById('srch-empty'));
+  go('search'); document.getElementById('nsrch').value = '';
+}
+
+// ═══════════════════════════════════════════════
+// EDITOR
+// ═══════════════════════════════════════════════
+function fmt(cmd) { document.getElementById('ed-area').focus(); document.execCommand(cmd, false, null); }
+function fmtB(tag) { document.getElementById('ed-area').focus(); document.execCommand('formatBlock', false, tag); }
+function insCode() { document.getElementById('ed-area').focus(); document.execCommand('insertHTML', false, '<pre style="background:#f4f6f8;border-radius:6px;padding:.65rem;font-family:monospace;font-size:.83rem;margin:.5rem 0">// code here</pre>'); }
+function onEd() {
+  var t = document.getElementById('ed-area').innerText || '', w = t.trim().split(/\s+/).filter(Boolean).length;
+  document.getElementById('ed-wc').textContent = w + ' words · ~' + Math.max(1, Math.ceil(w / 200)) + ' min read';
+  clearTimeout(autoST); autoST = setTimeout(function() { toast('✅ Draft auto-saved locally'); }, 3500);
+}
+function cpaste(e) { e.preventDefault(); document.execCommand('insertText', false, (e.clipboardData || window.clipboardData).getData('text/plain')); }
+
+function hCover(e) {
+  var f = e.target.files[0]; if (!f) return;
+  var r = new FileReader(); r.onload = function(ev) {
+    coverData = ev.target.result;
+    var p = document.getElementById('cvr-prev'); p.src = coverData; p.classList.add('show');
+    document.getElementById('cvr-zone').innerHTML = '<div class="uico">✅</div><span class="ulab">Cover uploaded</span><span class="uhint">Click to change</span>';
+    toast('🖼️ Cover image added!');
+  }; r.readAsDataURL(f);
+}
+function hBulk(e) { Array.from(e.target.files).forEach(function(f) { var r = new FileReader(); r.onload = function(ev) { addThumb(ev.target.result, f.name); }; r.readAsDataURL(f); }); }
+function insImg(e) {
+  var f = e.target.files[0]; if (!f) return;
+  var r = new FileReader(); r.onload = function(ev) {
+    document.getElementById('ed-area').focus();
+    document.execCommand('insertHTML', false, '<img src="' + ev.target.result + '" style="max-width:100%;border-radius:8px;margin:.7rem 0" alt="image"/>');
+    addThumb(ev.target.result, f.name); toast('📷 Image inserted!');
+  }; r.readAsDataURL(f);
+}
+function addThumb(src, name) {
+  var sec = document.getElementById('bulk-sec'); sec.style.display = 'block';
+  var list = document.getElementById('bulk-thumbs');
+  var wrap = document.createElement('div'); wrap.className = 'ithumb'; wrap.title = 'Click to insert';
+  var img = document.createElement('img'); img.src = src; img.alt = name;
+  img.onclick = function() { document.getElementById('ed-area').focus(); document.execCommand('insertHTML', false, '<img src="' + src + '" style="max-width:100%;border-radius:8px;margin:.7rem 0" alt="image"/>'); toast('📷 Inserted!'); };
+  var rm = document.createElement('button'); rm.className = 'rmi'; rm.innerHTML = '✕';
+  rm.onclick = function(e) { e.stopPropagation(); wrap.remove(); };
+  wrap.appendChild(img); wrap.appendChild(rm); list.appendChild(wrap);
+}
+function dov(e, id) { e.preventDefault(); document.getElementById(id).classList.add('dov'); }
+function dlv(id) { document.getElementById(id).classList.remove('dov'); }
+function ddrp(e, type) { e.preventDefault(); document.getElementById(type === 'cover' ? 'cvr-zone' : 'bulk-zone').classList.remove('dov'); var files = Array.from(e.dataTransfer.files).filter(function(f) { return f.type.startsWith('image/'); }); if (type === 'cover' && files[0]) { hCover({ target: { files: [files[0]] } }); } else { hBulk({ target: { files: files } }); } }
+function saveDraft() { toast('📁 Draft saved locally!'); }
+
+async function previewBlog() {
+  var title = document.getElementById('ed-title').value.trim(), content = document.getElementById('ed-area').innerHTML;
+  if (!title) { toast('Add a title first'); return; }
+  var tmp = { id: -999, title: title, content: content, category: document.getElementById('ed-cat').value || 'General', tags: document.getElementById('ed-tags').value, author: document.getElementById('ed-author').value || 'Preview', date: 'Preview', cover: coverData, likes: 0, views: 0, featured: false, deleted: false, published_at: new Date().toISOString() };
+  blogs.push(tmp); prevPage = 'editor'; openBlog(-999); blogs = blogs.filter(function(b) { return b.id !== -999; });
+}
+
+async function publishBlog() {
+  var title = document.getElementById('ed-title').value.trim(), content = document.getElementById('ed-area').innerHTML;
+  var cat = document.getElementById('ed-cat').value, tags = document.getElementById('ed-tags').value.trim(), author = document.getElementById('ed-author').value.trim();
+  if (!title) { toast('Add a title first'); return; }
+  if (!content || content.replace(/<[^>]*>/g, '').trim() === '') { toast('Write some content first'); return; }
+  if (!cat) { toast('Select a category'); return; }
+  if (!author) { toast('Enter your name'); return; }
+  var btn = document.getElementById('pub-btn');
+  btn.textContent = 'Publishing...'; btn.disabled = true;
+  try {
+    var now = new Date(), plain = content.replace(/<[^>]*>/g, '').trim();
+    var data = {
+      title: title, content: content,
+      excerpt: plain.substring(0, 120) + (plain.length > 120 ? '…' : ''),
+      category: cat, tags: tags, author: author,
+      date: now.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }),
+      cover: coverData, likes: 0, views: 0, featured: false, deleted: false,
+      published_at: now.toISOString()
+    };
+    var result = await sbPost('blogs', data);
+    blogs.unshift(result[0] || data);
+    addNotif('📝 "' + title + '" published!');
+    clearEditor(); toast('🎉 Story is live on Supabase!');
+    setTimeout(function() { go('home'); }, 900);
+  } catch(e) {
+    toast('⚠️ Publish failed. Check your connection and try again.');
+    console.error(e);
+  } finally {
+    btn.textContent = 'Publish story →'; btn.disabled = false;
+  }
+}
+
+function clearEditor() {
+  document.getElementById('ed-title').value = ''; document.getElementById('ed-area').innerHTML = '';
+  document.getElementById('ed-cat').value = ''; document.getElementById('ed-tags').value = ''; document.getElementById('ed-author').value = '';
+  document.getElementById('cvr-prev').classList.remove('show');
+  document.getElementById('ed-wc').textContent = '0 words · ~0 min read';
+  document.getElementById('bulk-sec').style.display = 'none'; document.getElementById('bulk-thumbs').innerHTML = '';
+  coverData = null;
+  document.getElementById('cvr-zone').innerHTML = '<div class="uico">🖼️</div><span class="ulab">Upload cover image</span><span class="uhint">Click or drag & drop · JPG, PNG, WEBP</span>';
+}
+
+// ═══════════════════════════════════════════════
+// ADMIN
+// ═══════════════════════════════════════════════
+function openAdm() { document.getElementById('adm-modal').classList.add('open'); document.getElementById('adm-u').value = ''; document.getElementById('adm-p').value = ''; document.getElementById('adm-err').style.display = 'none'; setTimeout(function() { document.getElementById('adm-u').focus(); }, 80); }
+function closeAdm() { document.getElementById('adm-modal').classList.remove('open'); }
+function tryLogin() {
+  if (document.getElementById('adm-u').value.trim() === AU && document.getElementById('adm-p').value === AP) { adminIn = true; closeAdm(); go('admin'); }
+  else { document.getElementById('adm-err').style.display = 'block'; document.getElementById('adm-p').value = ''; }
+}
+function admLogout() { adminIn = false; go('home'); }
+function admTab(el, tab) { document.querySelectorAll('.atab').forEach(function(a) { a.classList.remove('on'); }); el.classList.add('on'); renderAdmin(tab); }
+
+async function renderAdmin(tab) {
+  if (!adminIn) { go('home'); return; }
+  var c = document.getElementById('adm-content');
+  c.innerHTML = '<div class="loading-overlay"><div class="spinner"></div></div>';
+  try {
+    var allBlogs = await sbGet('blogs', '?order=id.desc');
+    var pub = allBlogs.filter(function(b) { return !b.deleted; });
+    var del = allBlogs.filter(function(b) { return b.deleted; });
+    var allCmts = await sbGet('comments', '?order=created_at.desc');
+    var allL = allBlogs.reduce(function(a, b) { return a + (b.likes || 0); }, 0);
+    var momCount = await sbGet('moments', '?select=id');
+
+    document.getElementById('as-t').textContent = allBlogs.length;
+    document.getElementById('as-p').textContent = pub.length;
+    document.getElementById('as-d').textContent = del.length;
+    document.getElementById('as-c').textContent = allCmts.length;
+    document.getElementById('as-l').textContent = allL;
+    document.getElementById('as-m').textContent = momCount.length;
+
+    c.innerHTML = '';
+
+    if (tab === 'posts') {
+      if (!pub.length) { c.innerHTML = '<div class="empty-s"><div class="ei">📄</div><h3>No stories yet</h3></div>'; return; }
+      var l = document.createElement('div'); l.className = 'adm-list';
+      pub.forEach(function(b) {
+        var d = document.createElement('div'); d.className = 'ai';
+        d.innerHTML = '<div class="ai-inf"><div class="ai-ttl">' + esc(b.title || 'Untitled') + '</div><div class="ai-mt">By ' + esc(b.author || '?') + ' · ' + esc(b.category || '?') + ' · ' + esc(b.date || '?') + ' · ❤️ ' + (b.likes || 0) + ' · 👁 ' + (b.views || 0) + '</div><div class="ai-ex">' + esc(b.excerpt || '') + '</div></div><div class="ai-act">' + (b.featured ? '<span class="bdg bdg-feat">⭐ Featured</span>' : '<span class="bdg bdg-pub">Published</span>') + '<button class="abtn ab-feat" onclick="tFeat(' + b.id + ',' + b.featured + ')">' + (b.featured ? 'Unfeature' : 'Feature ⭐') + '</button><button class="abtn ab-del" onclick="delPost(' + b.id + ')">Remove</button></div>';
+        l.appendChild(d);
+      }); c.appendChild(l);
+    } else if (tab === 'featured') {
+      var feat = pub.filter(function(b) { return b.featured; });
+      if (!feat.length) { c.innerHTML = '<div class="empty-s"><div class="ei">⭐</div><h3>No featured stories</h3><p>Feature stories from All Stories tab.</p></div>'; return; }
+      var l2 = document.createElement('div'); l2.className = 'adm-list';
+      feat.forEach(function(b) {
+        var d = document.createElement('div'); d.className = 'ai';
+        d.innerHTML = '<div class="ai-inf"><div class="ai-ttl">' + esc(b.title || 'Untitled') + '</div><div class="ai-mt">By ' + esc(b.author || '?') + ' · ❤️ ' + (b.likes || 0) + ' · 👁 ' + (b.views || 0) + '</div></div><div class="ai-act"><span class="bdg bdg-feat">⭐ Editor\'s Pick</span><button class="abtn ab-feat" onclick="tFeat(' + b.id + ',true)">Unfeature</button><button class="abtn ab-del" onclick="delPost(' + b.id + ')">Remove</button></div>';
+        l2.appendChild(d);
+      }); c.appendChild(l2);
+    } else if (tab === 'removed') {
+      if (!del.length) { c.innerHTML = '<div class="empty-s"><div class="ei">🗑</div><h3>Nothing removed</h3></div>'; return; }
+      var l3 = document.createElement('div'); l3.className = 'adm-list';
+      del.forEach(function(b) {
+        var d = document.createElement('div'); d.className = 'ai';
+        d.innerHTML = '<div class="ai-inf"><div class="ai-ttl" style="text-decoration:line-through;opacity:.55">' + esc(b.title || 'Untitled') + '</div><div class="ai-mt">By ' + esc(b.author || '?') + '</div></div><div class="ai-act"><span class="bdg bdg-del">Removed</span><button class="abtn ab-rst" onclick="rstPost(' + b.id + ')">Restore</button><button class="abtn ab-del" onclick="permDel(' + b.id + ')">Delete permanently</button></div>';
+        l3.appendChild(d);
+      }); c.appendChild(l3);
+    } else if (tab === 'comments') {
+      if (!allCmts.length) { c.innerHTML = '<div class="empty-s"><div class="ei">💬</div><h3>No comments yet</h3></div>'; return; }
+      var l4 = document.createElement('div'); l4.className = 'adm-list';
+      allCmts.forEach(function(cm) {
+        var blogTitle = (allBlogs.find(function(b) { return b.id === cm.blog_id; }) || {}).title || '?';
+        var d = document.createElement('div'); d.className = 'ai';
+        d.innerHTML = '<div class="ai-inf"><div class="cmi-bl">On: ' + esc(blogTitle) + '</div><div class="ai-ttl" style="font-size:.85rem">' + esc(cm.name) + '</div><div class="ai-ex">' + esc(cm.text) + '</div><div class="ai-mt">' + esc(cm.time) + '</div></div><div class="ai-act"><button class="abtn ab-del" onclick="delCmt(' + cm.id + ')">Delete</button></div>';
+        l4.appendChild(d);
+      }); c.appendChild(l4);
+    } else if (tab === 'moments') {
+      var moms = await sbGet('moments', '?order=sort_order.asc');
+      renderMomentsAdmin(c, moms);
+    }
+  } catch(e) { c.innerHTML = '<div class="empty-s"><div class="ei">⚠️</div><h3>Error loading data</h3><p>' + e.message + '</p></div>'; console.error(e); }
+}
+
+async function tFeat(id, currentFeat) {
+  try {
+    await sbPatch('blogs', id, { featured: !currentFeat });
+    toast(!currentFeat ? '⭐ Added to Editor\'s Picks' : 'Removed from picks');
+    renderAdmin(document.querySelector('.atab.on').textContent.toLowerCase().includes('editor') ? 'featured' : 'posts');
+  } catch(e) { toast('⚠️ Update failed'); }
+}
+async function delPost(id) {
+  try { await sbPatch('blogs', id, { deleted: true }); toast('🗑 Story removed'); renderAdmin('posts'); }
+  catch(e) { toast('⚠️ Could not remove story'); }
+}
+async function rstPost(id) {
+  try { await sbPatch('blogs', id, { deleted: false }); toast('✅ Story restored'); renderAdmin('removed'); }
+  catch(e) { toast('⚠️ Could not restore story'); }
+}
+async function permDel(id) {
+  if (!confirm('Permanently delete this story? This cannot be undone.')) return;
+  try { await sbDelete('blogs', id); toast('🗑 Permanently deleted'); renderAdmin('removed'); }
+  catch(e) { toast('⚠️ Could not delete story'); }
+}
+async function delCmt(id) {
+  try { await sbDelete('comments', id); toast('🗑 Comment deleted'); renderAdmin('comments'); }
+  catch(e) { toast('⚠️ Could not delete comment'); }
+}
+
+function renderMomentsAdmin(c, moms) {
+  var info = document.createElement('div');
+  info.style.cssText = 'font-size:.82rem;color:var(--g600);margin-bottom:1rem;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.25);border-radius:8px;padding:.75rem 1rem;line-height:1.6';
+  info.innerHTML = '📸 <strong>Upload real photos for Campus Moments.</strong> Click any slot to upload. Edit labels, add new slots, or remove existing ones. All changes save directly to Supabase.';
+  c.appendChild(info);
+  var grid = document.createElement('div'); grid.className = 'cm-admin-grid';
+  moms.forEach(function(m, idx) {
+    var slot = document.createElement('div'); slot.style.cssText = 'position:relative';
+    var finpId = 'cm-finp-' + idx;
+    var thumb = document.createElement('div'); thumb.className = 'cm-thumb'; thumb.title = 'Click to upload';
+    thumb.onclick = function() { document.getElementById(finpId).click(); };
+    if (m.img) { var img = document.createElement('img'); img.src = m.img; img.alt = m.label; img.style.cssText = 'width:100%;height:100%;object-fit:cover;position:absolute;inset:0'; thumb.appendChild(img); }
+    else { var sp = document.createElement('span'); sp.style.cssText = 'font-size:1.5rem;position:relative;z-index:1'; sp.textContent = m.emoji || '📷'; thumb.appendChild(sp); }
+    var lbl = document.createElement('div'); lbl.className = 'cm-thumb-label'; lbl.textContent = m.label; thumb.appendChild(lbl);
+    var rmBtn = document.createElement('button'); rmBtn.className = 'cm-rm'; rmBtn.innerHTML = '✕';
+    rmBtn.onclick = async function(e) {
+      e.stopPropagation();
+      if (moms.length <= 1) { toast('Need at least 1 slot'); return; }
+      try { await sbDelete('moments', m.id); toast('Slot removed'); renderAdmin('moments'); loadMoments(); }
+      catch(err) { toast('⚠️ Could not remove slot'); }
+    };
+    thumb.appendChild(rmBtn);
+    var finp = document.createElement('input'); finp.type = 'file'; finp.id = finpId; finp.accept = 'image/*'; finp.className = 'finp';
+    finp.onchange = function(e) {
+      var f = e.target.files[0]; if (!f) return;
+      var r = new FileReader(); r.onload = async function(ev) {
+        try {
+          await sbPatch('moments', m.id, { img: ev.target.result });
+          toast('📸 Photo updated!'); renderAdmin('moments'); loadMoments();
+        } catch(err) { toast('⚠️ Could not save image (may be too large). Try a smaller file.'); }
+      }; r.readAsDataURL(f);
+    };
+    slot.appendChild(thumb); slot.appendChild(finp);
+    var linp = document.createElement('input'); linp.type = 'text'; linp.className = 'cm-label-inp'; linp.value = m.label; linp.placeholder = 'Label';
+    linp.onchange = async function(e) {
+      try { await sbPatch('moments', m.id, { label: e.target.value }); toast('Label saved'); loadMoments(); }
+      catch(err) { toast('⚠️ Could not save label'); }
+    };
+    slot.appendChild(linp); grid.appendChild(slot);
+  });
+
+  // Add new slot
+  var addSlot = document.createElement('div'); addSlot.style.cssText = 'display:flex;flex-direction:column;gap:.4rem';
+  var addZone = document.createElement('div'); addZone.className = 'cm-add-zone'; addZone.innerHTML = '➕<span>Add new photo</span>';
+  var addInp = document.createElement('input'); addInp.type = 'file'; addInp.accept = 'image/*'; addInp.className = 'finp'; addInp.id = 'cm-add-inp';
+  addZone.onclick = function() { addInp.click(); };
+  addInp.onchange = function(e) {
+    var f = e.target.files[0]; if (!f) return;
+    var r = new FileReader(); r.onload = async function(ev) {
+      try {
+        await sbPost('moments', { emoji: '📷', label: 'New moment', img: ev.target.result, span: 1, sort_order: moms.length });
+        toast('📸 New moment added!'); renderAdmin('moments'); loadMoments();
+      } catch(err) { toast('⚠️ Could not add moment (image may be too large)'); }
+    }; r.readAsDataURL(f);
+  };
+  addSlot.appendChild(addZone); addSlot.appendChild(addInp); grid.appendChild(addSlot); c.appendChild(grid);
+}
+
+// ═══════════════════════════════════════════════
+// UTILS
+// ═══════════════════════════════════════════════
+function toast(msg) { var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(function() { t.classList.remove('show'); }, 2800); }
+function esc(s) { if (!s) return ''; var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// ═══════════════════════════════════════════════
+// PARTICLES
+// ═══════════════════════════════════════════════
+(function() {
+  var c = document.getElementById('ptcls'), em = ['📚', '🎓', '☕', '📝', '💡', '🏛️', '✨', '🖊️'];
+  for (var i = 0; i < 12; i++) {
+    var el = document.createElement('div'); el.className = 'ptcl';
+    el.style.cssText = 'left:' + Math.random() * 100 + '%;top:' + Math.random() * 100 + '%;font-size:' + (0.85 + Math.random() * 1.1) + 'rem;animation-delay:' + Math.random() * 5 + 's;animation-duration:' + (5 + Math.random() * 4) + 's;position:absolute';
+    el.textContent = em[Math.floor(Math.random() * em.length)]; c.appendChild(el);
+  }
+})();
+
+// ═══════════════════════════════════════════════
+// BOOT
+// ═══════════════════════════════════════════════
+loadAndRenderHome();
+</script>
+</body>
+</html>
